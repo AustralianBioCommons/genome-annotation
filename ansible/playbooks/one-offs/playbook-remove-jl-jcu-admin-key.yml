@@ -1,17 +1,16 @@
 ---
 - hosts: all
-  remote_user: "{{ansible_user}}"
   become: true
-  become_method: sudo
-  connection: "ssh"
 
   # Removes only the old "jl JCU @ Nectar" admin key left over on hosts.
   # Unlike playbook-add-admin-keys.yml this does NOT use exclusive:True,
   # so keys manually added to a host since deployment are left untouched.
+  # ansible_user is not set for some older host groups (eg oldclientapollovms)
+  # so fall back to ubuntu, which is the connection user everywhere else.
   # This playbook requires to use --limit option
   tasks:
     - name: "Remove jl JCU @ Nectar admin key"
       authorized_key:
-        user: "{{ansible_user}}"
+        user: "{{ ansible_user | default('ubuntu') }}"
         key: "{{ lookup('file', 'files/jl-jcu-admin-key.pub') }}"
         state: absent
