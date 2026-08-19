@@ -10,15 +10,15 @@ users:
   - username: "backup_user"
     comment: ""
     uid: 9999
-  - username: "j.lee"
-    comment: "Justin Lee"
-    uid: 19529
   - username: "m.thang"
     comment: "Mike Thang"
     uid: 13486
   - username: "c.hyde"
     comment: "Cameron Hyde"
     uid: 26717
+#  - username: "j.lee"
+#    comment: "Justin Lee"
+#    uid: 19529
 #  - username: "s.williams"
 #    comment: "Sarah Williams"
 #    uid: 35938
@@ -42,12 +42,12 @@ users:
 login_users:
   - username: "backup_user"
     key: files/backup_user.pub
-  - username: "j.lee"
-    key: files/j.lee.pub
   - username: "m.thang"
     key: files/m.thang.pub
   - username: "c.hyde"
     key: files/c.hyde.pub
+  # - username: "j.lee"
+  #   key: files/j.lee.pub
 #  - username: "s.williams"
 #    key: files/s.williams.pub
 #  - username: "n.rhodes"
@@ -61,26 +61,26 @@ login_users:
 
 # add sysadmins; or if configuring a sandpit for a user, add that user here (ie m.thang. c.hyde)
 sudo_users:
-  - "j.lee"
-#  - "m.thang"
-#  - "c.hyde"
-#  - "n.rhodes"
+- "c.hyde"
+# - "j.lee"
+# - "m.thang"
+# - "n.rhodes"
 
 # deactivate accounts - prevents login on existing account by setting shell to /sbin/nologin
 # this is for users previously added (to some/all machines) and no longer need access (to all machines)
 # the inactive user will be created if not already defined in users list (with next available UID)
 # but can be deleted by adding to the remove_users list
 inactive_users:
-  - "c.hyde" # doesn't need access to anything except web servers, where shell needs to be activated
+  - "j.lee"
 #  - "s.williams" # Apollo workshops
 #  - "n.rhodes"
 #  - "a.bulgaris"
 
 # remove users no longer associated with the project
 remove_users:
+  - "j.lee"
   - "n.rhodes"
   - "g.price"
   - "a.bulgaris"
   - "m.basetti"
   - "g.graham"
-
